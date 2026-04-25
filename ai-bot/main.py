@@ -2,7 +2,7 @@ from flask import Flask, request
 import telebot
 import os
 
-app = Flask(name)
+app = Flask(_name_)
 bot = telebot.TeleBot("8216472814:AAEdb-q43nxbPVEG879z-YpTphfz2KRjQ2o")
 
 @app.route("/", methods=["GET"])
