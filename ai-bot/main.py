@@ -1,6 +1,6 @@
 from flask import Flask, request
 
-app = Flask(name)
+app = Flask(_name_)
 
 @app.route('/')
 def home():
@@ -9,9 +9,10 @@ def home():
 @app.route('/webhook', methods=['POST'])
 def webhook():
     data = request.json
-    print(data)  # чтобы видеть, что приходит
+    print(data)
     return "OK", 200
-    import os
 
-port = int(os.environ.get("PORT", 5000))
-app.run(host="0.0.0.0", port=port)
+if name == "main":
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
