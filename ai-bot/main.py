@@ -1,24 +1,17 @@
 from flask import Flask, request
-import telebot
-import os
 
-app = Flask(_name_)
-bot = telebot.TeleBot("8216472814:AAEdb-q43nxbPVEG879z-YpTphfz2KRjQ2o")
+app = Flask(name)
 
-@app.route("/", methods=["GET"])
+@app.route('/')
 def home():
-    return "Bot is running!"
+    return "Bot is working"
 
-@app.route("/webhook", methods=["POST"])
+@app.route('/webhook', methods=['POST'])
 def webhook():
-    json_str = request.get_data().decode("UTF-8")
-    update = telebot.types.Update.de_json(json_str)
-    bot.process_new_updates([update])
-    return "ok"
+    data = request.json
+    print(data)  # чтобы видеть, что приходит
+    return "OK", 200
+    import os
 
-@bot.message_handler(commands=["start"])
-def start(message):
-    bot.send_message(message.chat.id, "Привет!")
-
-if name == "main":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 3000)))
+port = int(os.environ.get("PORT", 5000))
+app.run(host="0.0.0.0", port=port)
